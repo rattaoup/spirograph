@@ -9,7 +9,21 @@ from math import pi
 import matplotlib.pyplot as plt
 
 if __name__ == '__main__':
-    class DrawSpirograph(nn.Module):
+    # save data
+    device = 'cuda' if torch.cuda.is_available() else 'cpu'
+    train_gen_param, test_gen_param, spirograph = get_spirograph_dataset()
+    trainset = param_to_rgb(train_gen_param, spirograph)
+    testset = param_to_rgb(test_gen_param, spirograph)
+
+    if not os.path.isdir('dataset'):
+        os.mkdir('dataset')
+    destination_train = os.path.join('./dataset', 'spirograph_train.pth')
+    torch.save(trainset, destination_train)
+    destination_test = os.path.join('./dataset', 'spirograph_test.pth')
+    torch.save(testset, destination_test)
+
+
+class DrawSpirograph(nn.Module):
 
         all_params = {'m', 'b', 'h', 'sigma', 'rfore', 'rback', 'gfore', 'gback', 'bfore', 'bback'}
 
@@ -102,33 +116,20 @@ if __name__ == '__main__':
 
             return rgb
 
-    # generate generative parameters
-    def get_spirograph_dataset():
-        spirograph = DrawSpirograph(['m', 'b', 'sigma', 'rfore'], ['h', 'rback', 'gfore', 'gback', 'bfore', 'bback'])
-        trainset, testset = spirograph.dataset()
-        return trainset, testset, spirograph
+ # generate generative parameters
+def get_spirograph_dataset():
+    spirograph = DrawSpirograph(['m', 'b', 'sigma', 'rfore'], ['h', 'rback', 'gfore', 'gback', 'bfore', 'bback'])
+    trainset, testset = spirograph.dataset()
+    return trainset, testset, spirograph
 
     # from generative parameters, sample random transformations parameter and draw spirographs
-    def param_to_rgb(gen_param, spirograph):
-        aug_param = spirograph.sample_random_numbers(gen_param[0].shape, device)
-        with torch.no_grad():
-            X = spirograph(gen_param[0].to(device), aug_param )
-            y = torch.cat([gen_param[1].to(device), aug_param], dim = 1)
-            store = [(X,y)]
-            X, y = zip(*store)
-            X, y = torch.cat(X, dim=0), torch.cat(y, dim=0)
-        data = TensorDataset(X,y)
-        return data
-
-    # save data
-    device = 'cuda' if torch.cuda.is_available() else 'cpu'
-    train_gen_param, test_gen_param, spirograph = get_spirograph_dataset()
-    trainset = param_to_rgb(train_gen_param, spirograph)
-    testset = param_to_rgb(test_gen_param, spirograph)
-
-    if not os.path.isdir('dataset'):
-        os.mkdir('dataset')
-    destination_train = os.path.join('./dataset', 'spirograph_train.pth')
-    torch.save(trainset, destination_train)
-    destination_test = os.path.join('./dataset', 'spirograph_test.pth')
-    torch.save(testset, destination_test)
+def param_to_rgb(gen_param, spirograph):
+    aug_param = spirograph.sample_random_numbers(gen_param[0].shape, device)
+    with torch.no_grad():
+        X = spirograph(gen_param[0].to(device), aug_param )
+        y = torch.cat([gen_param[1].to(device), aug_param], dim = 1)
+        store = [(X,y)]
+        X, y = zip(*store)
+        X, y = torch.cat(X, dim=0), torch.cat(y, dim=0)
+    data = TensorDataset(X,y)
+    return data
