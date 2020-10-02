@@ -10,4 +10,4 @@ Each parameter is sampled from a uniform distribution, m ~ U(2, 5), b ~ U(0.1, 1
 
 
 ### Differentiable generative process
-The generating process of the spirograph dataset is fully differentiable. When we call a function `spirograph.dataset()` we draw only the generative parameters from the mentioned distribution. We also generate transformations parameters by calling `spirograph.sample_random_numbers()`. Now we can generate the spirograph image by passing these parameters to the function `spirograph` which start recording a computation graph.
+The generating process of the spirograph dataset is fully differentiable. When we call a function `spirograph.dataset()` we draw only the generative parameters from the mentioned distribution. We also generate transformations parameters by calling `spirograph.sample_random_numbers()`. Now we can generate the spirograph image by passing these parameters to the function `spirograph(gen_param, trans_param)` to get the generated spirograph image(We start recording the computation graph now).
