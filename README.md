@@ -4,5 +4,4 @@ This is a pytorch implementation for generating the Spirograph dataset as in Imp
 
 ### Choosing generative and transformations parameters
 The input of the class `DrawSpirograph` contains generative and transformations parameters respectively. For example, the default setting is as follows
-```spirograph =  DrawSpirograph(['m', 'b', 'sigma', 'rfore'], ['h', 'rback', 'gfore', 'gback', 'bfore', 'bback'])
-```
+``` spirograph =  DrawSpirograph(['m', 'b', 'sigma', 'rfore'], ['h', 'rback', 'gfore', 'gback', 'bfore', 'bback'])```
