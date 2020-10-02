@@ -6,7 +6,7 @@ This is a pytorch implementation for generating the Spirograph dataset as in Imp
 The input of the class `DrawSpirograph` contains generative and transformations parameters that we can change. For example, the default setting is as follows
 
 ``` spirograph =  DrawSpirograph(['m', 'b', 'sigma', 'rfore'], ['h', 'rback', 'gfore', 'gback', 'bfore', 'bback'])```
-Each parameter is sampled from a uniform distribution, m ~ U(2, 5), b ~ U(0.1, 1.1), h ~ U(0.5, 2.5), sigma ~ U(0.25, 1), foreground_colour ~ U(0.4, 1), backgorund ~ U(0, 0.6).
+Each parameter is sampled from a uniform distribution, m ~ U(2, 5), b ~ U(0.1, 1.1), h ~ U(0.5, 2.5), sigma ~ U(0.25, 1), foreground_colour ~ U(0.4, 1), background ~ U(0, 0.6).
 
 
 ### Differentiable generative process
