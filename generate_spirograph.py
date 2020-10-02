@@ -128,8 +128,5 @@ def param_to_rgb(gen_param, spirograph):
     with torch.no_grad():
         X = spirograph(gen_param[0].to(device), aug_param )
         y = torch.cat([gen_param[1].to(device), aug_param], dim = 1)
-        store = [(X,y)]
-        X, y = zip(*store)
-        X, y = torch.cat(X, dim=0), torch.cat(y, dim=0)
     data = TensorDataset(X,y)
     return data
