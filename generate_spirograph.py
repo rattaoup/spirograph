@@ -102,7 +102,6 @@ class DrawSpirograph(nn.Module):
         return rgb
 
 def get_spirograph_dataset():
-
     spirograph = DrawSpirograph(['m', 'b', 'sigma', 'rfore'], ['h', 'rback', 'gfore', 'gback', 'bfore', 'bback'])
     trainset, testset = spirograph.dataset()
     return trainset, testset, spirograph
