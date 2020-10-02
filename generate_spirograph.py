@@ -131,4 +131,4 @@ if __name__ == '__main__':
     destination_train = os.path.join('./dataset', 'spirograph_train.pth')
     torch.save(trainset, destination_train)
     destination_test = os.path.join('./dataset', 'spirograph_test.pth')
-    torch.save(test, destination_test)
+    torch.save(testset, destination_test)
