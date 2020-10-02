@@ -8,21 +8,6 @@ from collections import OrderedDict
 from math import pi
 import matplotlib.pyplot as plt
 
-if __name__ == '__main__':
-    # save data
-    device = 'cuda' if torch.cuda.is_available() else 'cpu'
-    train_gen_param, test_gen_param, spirograph = get_spirograph_dataset()
-    trainset = param_to_rgb(train_gen_param, spirograph)
-    testset = param_to_rgb(test_gen_param, spirograph)
-
-    if not os.path.isdir('dataset'):
-        os.mkdir('dataset')
-    destination_train = os.path.join('./dataset', 'spirograph_train.pth')
-    torch.save(trainset, destination_train)
-    destination_test = os.path.join('./dataset', 'spirograph_test.pth')
-    torch.save(testset, destination_test)
-
-
 class DrawSpirograph(nn.Module):
 
         all_params = {'m', 'b', 'h', 'sigma', 'rfore', 'rback', 'gfore', 'gback', 'bfore', 'bback'}
@@ -130,3 +115,17 @@ def param_to_rgb(gen_param, spirograph):
         y = torch.cat([gen_param[1].to(device), aug_param], dim = 1)
     data = TensorDataset(X,y)
     return data
+
+if __name__ == '__main__':
+    # save data
+    device = 'cuda' if torch.cuda.is_available() else 'cpu'
+    train_gen_param, test_gen_param, spirograph = get_spirograph_dataset()
+    trainset = param_to_rgb(train_gen_param, spirograph)
+    testset = param_to_rgb(test_gen_param, spirograph)
+
+    if not os.path.isdir('dataset'):
+        os.mkdir('dataset')
+    destination_train = os.path.join('./dataset', 'spirograph_train.pth')
+    torch.save(trainset, destination_train)
+    destination_test = os.path.join('./dataset', 'spirograph_test.pth')
+    torch.save(testset, destination_test)
