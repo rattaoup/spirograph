@@ -18,9 +18,11 @@ The generating process of the Spirograph dataset is fully differentiable. When w
 
 ## Citation
 If you use the Spirograph, please consider citing the following paper
-```@article{foster2020improving,
+```
+@article{foster2020improving,
   title={Improving Transformation Invariance in Contrastive Representation Learning},
   author={Foster, Adam and Pukdee, Rattana and Rainforth, Tom},
   journal={arXiv preprint arXiv:2010.09515},
   year={2020}
-}```
+}
+```
