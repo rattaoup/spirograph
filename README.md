@@ -19,7 +19,7 @@ Each parameter is sampled from a uniform distribution, `m ~ U(2, 5)`, `b ~ U(0.1
 The generating process of the Spirograph dataset is fully differentiable. When we call a function `spirograph.dataset()` we draw only the generative parameters from the mentioned distribution. We also generate transformations parameters by calling `spirograph.sample_random_numbers()`. Now we can generate the spirograph image by passing these parameters to the function `spirograph(gen_param, trans_param)` to get the generated spirograph image. The final step produces Spirograph sample images with pixel values that are fully differentiable in the input tensors.
 
 ## Citation
-If you use the Spirograph, please consider citing the following paper
+If you use the Spirograph dataset, please consider citing the following paper
 ```
 @article{foster2020improving,
   title={Improving Transformation Invariance in Contrastive Representation Learning},
