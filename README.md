@@ -1,6 +1,6 @@
 # Spirograph
 
-This is a PyTorch implementation for generating the Spirograph dataset as in (Improving Transformation Invariance in Contrastive Representation Learning)[https://arxiv.org/abs/2010.09515].
+This is a PyTorch implementation for generating the Spirograph dataset as in [Improving Transformation Invariance in Contrastive Representation Learning](https://arxiv.org/abs/2010.09515).
 
 ## Generating a Spirograph dataset
 The script `generate_spirograph.py` generates two tensor datasets called `spirograph_train.pth` and `spirograph_test.pth` of size 5000 and 2000 respectively. Each element of the dataset is a pair of `(3,32,32)` Spirograph images and its 10 corresponding generative and nuisance transformation parameters. 
