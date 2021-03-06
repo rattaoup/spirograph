@@ -1,5 +1,8 @@
 # Spirograph
 
+![Samples from Spirograph](/fig/spirograph4pic_1.png)
+![Samples from Spirograph](/fig/spirograph4pic_2.png)
+
 This is a PyTorch implementation for generating the Spirograph dataset as in [Improving Transformation Invariance in Contrastive Representation Learning](https://arxiv.org/abs/2010.09515).
 
 ## Generating a Spirograph dataset
